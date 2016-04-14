@@ -8,4 +8,5 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <plugin name="org.apache.cordova.device-orientation" spec="0.3.11" source="pgb" />
 </widget>
