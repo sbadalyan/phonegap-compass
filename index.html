@@ -6,7 +6,7 @@
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
 
-    // The watch id references the current `watchHeading`
+    /*// The watch id references the current `watchHeading`
     var watchID = null;
 
     // Wait for device API libraries to load
@@ -52,16 +52,16 @@
     function onError(compassError) {
         alert('Compass error: ' + compassError.code);
     }
-    
+    */
 
- /*document.addEventListener('deviceready', function(){
-    var watchId = 0;
+ document.addEventListener('deviceready', function(){
+    var watchId = null;
     var start = document.querySelector('.start');
     start.addEventListener('click', function(){
         var options = null;
-        if(watchId==0){
+        //if(watchId==null){
                 options = {
-                    frequency: 100
+                    frequency: 200
                 }
                 navigator.compass.watchHeading(
                     function(heading){
@@ -76,29 +76,29 @@
                     }, 
                     options
                 );
-        }
+       // }
     });
  
  });
    var stop = document.querySelector('.stop');
     stop.addEventListener('click', function(){
         navigator.compass.clearWatch(watchId);
-        watchId = 0;
-    });*/
+        watchId = null;
+    });
     </script>
   </head>
   <body>
  
- <!--div id="heading">Waiting for heading...</div>
+ <div id="heading">Waiting for heading...</div>
     <button class="start" >Start Watching</button>
-    <button class="stop">Stop Watching</button-->
+    <button class="stop">Stop Watching</button>
 
-        <div id="heading">Waiting for heading...</div>
+        <!--div id="heading">Waiting for heading...</div>
     <button onclick="startWatch();">Start Watching</button>
-    <button onclick="stopWatch();">Stop Watching</button>
+    <button onclick="stopWatch();">Stop Watching</button-->
 
     <div class="compass">
-            <!--img  class="compass-img" src="compass.png" width="240" height="239"-->
+            <img  class="compass-img" src="compass.png" width="240" height="239">
             <img class="needle" src="needle.png" width="40" height="170">           
         </div>
   </body>
