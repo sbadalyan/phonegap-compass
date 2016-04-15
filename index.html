@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="jquery.js"></script>
+
+	<title>Composs</title>
+</head>
+<body>
+	<div class="compass-wrraper">
+		<div class="header">Comapss</div>
+		<div>
+			<label>Heading:</label>
+			<input type = "text" id = "heading-input" value = "0">
+		</div>
+		<div class="compass">
+			<img  class="compass-img" src="compass.png" width="240" height="239">
+			<img class="compass-needle" src="needle.png" width="40" height="170">			
+		</div>
+		<div class="watch">Watch heading</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	 document.addEventListener('deviceready', function(){
+	 	var watchId=0;
+	 	$('.watch').band('touchstart', function(){
+	 		var options = null;
+	 		if(watchId==0){
+
+	 			options = {
+	 				frequency: 100
+	 			}
+	 			navigator.compass.watchHeading(
+	 			function(heading){
+	 				var rotation = Math.round(heading.magneticHeading)+'deg';
+	 				$('#heading-input').attr('value', heading.magneticHeading);
+	 				$('$compass-needle').css('-webkit-transform', 'rotate('+rotation+')');
+	 			}, 
+	 			function(error){
+	 				console.log("error");
+	 			}, 
+	 			options);
+	 			$(this).html('stop');
+	 		}else{
+	 		}
+	 	});
+	 }); 
+</script>
+<style type="text/css">
+	.compass-wrraper{
+		max-width: 320px;
+		margin: 0 auto;
+		border: 5px solid #D54A4A;
+	}
+	.compass{
+		position: relative;
+	}
+	.compass-needle{
+		position: absolute;
+		right: 175px;
+		top: 33px;
+	}
+
+</style>
