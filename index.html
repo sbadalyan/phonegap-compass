@@ -53,7 +53,7 @@
     */
 
  document.addEventListener('deviceready', function(){
-    var watchId=0;
+    var watchId = 0;
     var start = document.querySelector('.start');
     start.addEventListener('click', function(){
         var options = null;
@@ -68,25 +68,21 @@
                         var rotation = Math.round(heading.magneticHeading)+'deg';
                         var needle = document.querySelector('.needle');
                         needle.style.webkitTransform = 'rotate('+rotation+')';
-                        //$('#heading-input').attr('value', heading.magneticHeading);
-                        //$('$compass-needle').css('-webkit-transform', 'rotate('+rotation+')');*/
                     }, 
                     function(error){
                         console.log("error");
                     }, 
                     options
                 );
-        }else{
-            navigator.compass.clearWatch(watchID);
-            watchID = null;
         }
     });
-    var stop = document.querySelector('.stop');
-    stop.addEventListener('click', function(){
-        navigator.compass.clearWatch(watchID);
-        watchID = null;
-    });
+ 
  });
+   var stop = document.querySelector('.stop');
+    stop.addEventListener('click', function(){
+        navigator.compass.clearWatch(watchId);
+        watchId = 0;
+    });
     </script>
   </head>
   <body>
