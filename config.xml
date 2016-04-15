@@ -8,4 +8,5 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <plugin name="org.apache.cordova.device-motion" spec="0.2.11" source="pgb" />
 </widget>
