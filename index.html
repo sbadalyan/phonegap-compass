@@ -5,7 +5,7 @@
 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
-
+/*
     // The watch id references the current `watchHeading`
     var watchID = null;
 
@@ -50,7 +50,42 @@
     function onError(compassError) {
         alert('Compass error: ' + compassError.code);
     }
+    */
+    (function(window){
+        function Compass(){
+            this.watchID = null;
+            this.constructor();
+        },
+        Compass.prototype.constructor = function(){
+            document.addEventListener("deviceready", onDeviceReady, false);
+        },
+        Compass.prototype.onDeviceReady = function(){
+             startWatch();
+        },
+        Compass.prototpye.startWatch = function(){
+            var options = { frequency: 3000 };
+            watchID = navigator.compass.watchHeading(onSuccess, onError, options);
+        },
+        Compass.prototype.onSuccess = function(heading){
+            var element = document.getElementById('heading');
+            element.innerHTML = 'Heading: ' + heading.magneticHeading;
+        }
+        Compass.prototype.onError = function(){
+            alert('Compass error: ' + compassError.code);
+        }
+        Compass.prototype.stopWatch = function(){
+            if (watchID) {
+                navigator.compass.clearWatch(watchID);
+                watchID = null;
+            }
+        }
+        var compass = new Compass();
+        window.compass = compass;
+    })(window)
 
+    (function(){
+        window.compass
+    })(window);
     </script>
   </head>
   <body>
