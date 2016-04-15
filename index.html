@@ -56,28 +56,30 @@
     var watchId=0;
     var start = document.querySelector('.start');
     start.addEventListener('click', function(){
-        console.log('test');
         var options = null;
         if(watchId==0){
-
                 options = {
                     frequency: 100
                 }
                 navigator.compass.watchHeading(
-                function(heading){
-                     var element = document.getElementById('heading');
-        element.innerHTML = 'Heading: ' + heading.magneticHeading;
-                   /* var rotation = Math.round(heading.magneticHeading)+'deg';
-                    $('#heading-input').attr('value', heading.magneticHeading);
-                    $('$compass-needle').css('-webkit-transform', 'rotate('+rotation+')');*/
-                }, 
-                function(error){
-                    console.log("error");
-                }, 
-                options);
+                    function(heading){
+                        var element = document.getElementById('heading');
+                        element.innerHTML = 'Heading: ' + heading.magneticHeading;
+                       /* var rotation = Math.round(heading.magneticHeading)+'deg';
+                        $('#heading-input').attr('value', heading.magneticHeading);
+                        $('$compass-needle').css('-webkit-transform', 'rotate('+rotation+')');*/
+                    }, 
+                    function(error){
+                        console.log("error");
+                    }, 
+                    options
+                );
+        }else{
+            navigator.compass.clearWatch(watchID);
+            watchID = null;
         }
     });
-
+    
  });
     </script>
   </head>
