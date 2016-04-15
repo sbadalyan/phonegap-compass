@@ -65,9 +65,11 @@
                     function(heading){
                         var element = document.getElementById('heading');
                         element.innerHTML = 'Heading: ' + heading.magneticHeading;
-                       /* var rotation = Math.round(heading.magneticHeading)+'deg';
-                        $('#heading-input').attr('value', heading.magneticHeading);
-                        $('$compass-needle').css('-webkit-transform', 'rotate('+rotation+')');*/
+                        var rotation = Math.round(heading.magneticHeading)+'deg';
+                        var needle = document.querySelector('.needle');
+                        needle.style.webkitTransform = 'rotate('+rotation+')';
+                        //$('#heading-input').attr('value', heading.magneticHeading);
+                        //$('$compass-needle').css('-webkit-transform', 'rotate('+rotation+')');*/
                     }, 
                     function(error){
                         console.log("error");
@@ -79,7 +81,11 @@
             watchID = null;
         }
     });
-    
+    var stop = document.querySelector('.stop');
+    stop.addEventListener('click', function(){
+        navigator.compass.clearWatch(watchID);
+        watchID = null;
+    });
  });
     </script>
   </head>
@@ -87,10 +93,19 @@
  
  <div id="heading">Waiting for heading...</div>
     <button class="start" >Start Watching</button>
-    <button onclick="stopWatch();">Stop Watching</button>
-
+    <button class="stop">Stop Watching</button>
+<div class="compass">
+            <!--img  class="compass-img" src="compass.png" width="240" height="239"-->
+            <img class="needle" src="needle.png" width="40" height="170">           
+        </div>
         <!--div id="heading">Waiting for heading...</div>
     <button onclick="startWatch();">Start Watching</button>
     <button onclick="stopWatch();">Stop Watching</button-->
   </body>
 </html>
+<style type="text/css">
+    .compass{
+        max-height: 320px;
+        margin: 0 auto;
+    }
+</style>
