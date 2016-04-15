@@ -1,0 +1,11 @@
+<widget id="com.example.compass" version="0.0.1">
+    <name>Compasss</name>
+    <author email="dev@callback.apache.org" href="http://phonegap.com">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <feature name="Compass">
+    <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
+</feature>
+</widget>
