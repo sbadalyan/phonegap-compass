@@ -1,1 +1,1 @@
-# phonegap-compass 
+# Phonegap Compass
