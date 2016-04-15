@@ -5,7 +5,7 @@
 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
-/*
+
     // The watch id references the current `watchHeading`
     var watchID = null;
 
@@ -43,6 +43,8 @@
     function onSuccess(heading) {
         var element = document.getElementById('heading');
         element.innerHTML = 'Heading: ' + heading.magneticHeading;
+        var needle = document.querySelector('.needle');
+        needle.style.webkitTransform = 'rotate('+rotation+')';
     }
 
     // onError: Failed to get the heading
@@ -50,9 +52,9 @@
     function onError(compassError) {
         alert('Compass error: ' + compassError.code);
     }
-    */
+    
 
- document.addEventListener('deviceready', function(){
+ /*document.addEventListener('deviceready', function(){
     var watchId = 0;
     var start = document.querySelector('.start');
     start.addEventListener('click', function(){
@@ -82,21 +84,23 @@
     stop.addEventListener('click', function(){
         navigator.compass.clearWatch(watchId);
         watchId = 0;
-    });
+    });*/
     </script>
   </head>
   <body>
  
- <div id="heading">Waiting for heading...</div>
+ <!--div id="heading">Waiting for heading...</div>
     <button class="start" >Start Watching</button>
-    <button class="stop">Stop Watching</button>
-<div class="compass">
+    <button class="stop">Stop Watching</button-->
+
+        <div id="heading">Waiting for heading...</div>
+    <button onclick="startWatch();">Start Watching</button>
+    <button onclick="stopWatch();">Stop Watching</button>
+
+    <div class="compass">
             <!--img  class="compass-img" src="compass.png" width="240" height="239"-->
             <img class="needle" src="needle.png" width="40" height="170">           
         </div>
-        <!--div id="heading">Waiting for heading...</div>
-    <button onclick="startWatch();">Start Watching</button>
-    <button onclick="stopWatch();">Stop Watching</button-->
   </body>
 </html>
 <style type="text/css">
