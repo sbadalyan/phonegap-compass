@@ -1,3 +1,4 @@
+<? version = "1.0" enconding = "UTF-8"?>
 <widget id="com.example.compass" version="0.0.1">
     <name>Compasss</name>
     <author email="dev@callback.apache.org" href="http://phonegap.com">
@@ -6,6 +7,6 @@
     <content src="index.html" />
     <access origin="*" />
     <feature name="Compass">
-    <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
+   <plugin name="org.apache.cordova.device-orientation" spec="0.3.11" source="pgb" />
 </feature>
 </widget>
