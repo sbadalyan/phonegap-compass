@@ -1,9 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Composs</title>
-</head>
 <body>
-	<div>ooooo</div>
+    <div class="app">
+        <h1>Compass</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+        </div>
+        <div id="heading" style="display:none;">
+            <p class="event listening blink">WAITING FOR COMPASS</p>
+            <p class="event received">***</p>
+        </div>
+    </div>
+    <script type="text/javascript" src="phonegap.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
 </body>
-</html>
