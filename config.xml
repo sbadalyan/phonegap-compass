@@ -1,4 +1,4 @@
-<? version = "1.0" enconding = "UTF-8"?>
+
 <widget id="com.example.compass" version="0.0.1">
     <name>Compasss</name>
     <author email="dev@callback.apache.org" href="http://phonegap.com">
