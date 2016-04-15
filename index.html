@@ -51,46 +51,44 @@
         alert('Compass error: ' + compassError.code);
     }
     */
-    (function(window){
-        function Compass(){
-            this.watchID = null;
-            this.constructor();
-        },
-        Compass.prototype.constructor = function(){
-            document.addEventListener("deviceready", onDeviceReady, false);
-        },
-        Compass.prototype.onDeviceReady = function(){
-             startWatch();
-        },
-        Compass.prototpye.startWatch = function(){
-            var options = { frequency: 3000 };
-            watchID = navigator.compass.watchHeading(onSuccess, onError, options);
-        },
-        Compass.prototype.onSuccess = function(heading){
-            var element = document.getElementById('heading');
-            element.innerHTML = 'Heading: ' + heading.magneticHeading;
-        }
-        Compass.prototype.onError = function(){
-            alert('Compass error: ' + compassError.code);
-        }
-        Compass.prototype.stopWatch = function(){
-            if (watchID) {
-                navigator.compass.clearWatch(watchID);
-                watchID = null;
-            }
-        }
-        var compass = new Compass();
-        window.compass = compass;
-    })(window)
 
-    (function(){
-        window.compass
-    })(window);
+ document.addEventListener('deviceready', function(){
+    var watchId=0;
+    var start = document.querySelector('.start');
+    start.addEventListener('click', function(){
+        console.log('test');
+        var options = null;
+        if(watchId==0){
+
+                options = {
+                    frequency: 100
+                }
+                navigator.compass.watchHeading(
+                function(heading){
+                     var element = document.getElementById('heading');
+        element.innerHTML = 'Heading: ' + heading.magneticHeading;
+                   /* var rotation = Math.round(heading.magneticHeading)+'deg';
+                    $('#heading-input').attr('value', heading.magneticHeading);
+                    $('$compass-needle').css('-webkit-transform', 'rotate('+rotation+')');*/
+                }, 
+                function(error){
+                    console.log("error");
+                }, 
+                options);
+        }
+    });
+
+ });
     </script>
   </head>
   <body>
-    <div id="heading">Waiting for heading...</div>
-    <button onclick="startWatch();">Start Watching</button>
+ 
+ <div id="heading">Waiting for heading...</div>
+    <button class="start" >Start Watching</button>
     <button onclick="stopWatch();">Stop Watching</button>
+
+        <!--div id="heading">Waiting for heading...</div>
+    <button onclick="startWatch();">Start Watching</button>
+    <button onclick="stopWatch();">Stop Watching</button-->
   </body>
 </html>
