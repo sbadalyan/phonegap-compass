@@ -7,7 +7,7 @@ document.addEventListener('deviceready', function(){
             }
         navigator.compass.watchHeading(
             function(heading){
-                var element = document.getElementById('heading');
+                var element = document.querySelector('.heading');
                 element.innerHTML = 'Heading: ' + heading.magneticHeading;
                 var rotation = Math.round(heading.magneticHeading)+'deg';
                 var needle = document.querySelector('.needle');
